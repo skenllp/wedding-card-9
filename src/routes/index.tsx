@@ -16,7 +16,9 @@ export const Route = createFileRoute("/")({
         content: "08.08.2026 · Chaliyar Auditorium, Edavannappara",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/sabithali.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/sabithali.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
