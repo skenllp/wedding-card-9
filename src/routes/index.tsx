@@ -124,6 +124,16 @@ function Invitation() {
           "-=0.4"
         )
         .from(
+          ".intro-names",
+          {
+            opacity: 0,
+            y: 16,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        )
+        .from(
           ".intro-btn",
           { opacity: 0, y: 16, scale: 0.95, duration: 0.9, ease: "back.out(1.5)" },
           "-=0.2"
@@ -158,35 +168,15 @@ function Invitation() {
     };
   }, []);
 
-  /* Audio control */
   const toggleAudio = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    const gsap = (window as any).gsap;
     if (audio.paused) {
-      audio.volume = 0;
-      audio
-        .play()
-        .then(() => {
-          setPlaying(true);
-          if (gsap) gsap.to(audio, { volume: 0.55, duration: 1.5 });
-          else audio.volume = 0.55;
-        })
-        .catch(() => {});
+      audio.volume = 0.6;
+      audio.play().then(() => setPlaying(true)).catch(() => {});
     } else {
-      if (gsap) {
-        gsap.to(audio, {
-          volume: 0,
-          duration: 0.9,
-          onComplete: () => {
-            audio.pause();
-            setPlaying(false);
-          },
-        });
-      } else {
-        audio.pause();
-        setPlaying(false);
-      }
+      audio.pause();
+      setPlaying(false);
     }
   };
 
@@ -211,7 +201,22 @@ function Invitation() {
             In the name of Allah, the Most Gracious, the Most Merciful
           </p>
           <div className="intro-mark">Wedding Invitation</div>
-          <button className="intro-btn" onClick={() => setOpened(true)}>
+          <h2 className="hero-names intro-names">
+            <span className="name-word">Sabith Ali</span>
+            <span className="name-amp">&amp;</span>
+            <span className="name-word">Fathima Nihana</span>
+          </h2>
+          <button
+            className="intro-btn"
+            onClick={() => {
+              setOpened(true);
+              const audio = audioRef.current;
+              if (audio && audio.paused) {
+                audio.volume = 0.6;
+                audio.play().then(() => setPlaying(true)).catch(() => {});
+              }
+            }}
+          >
             Open Invitation
           </button>
         </div>
@@ -305,9 +310,9 @@ function Invitation() {
 
       {/* ── COUPLE PHOTO ── */}
       <section className="section couple-photo-section">
-      <div className="couple-photo-frame" data-reveal>
-        <img src={COUPLE_PORTRAIT} alt="Sabith Ali and Fathima Nihana" />
-        <div className="photo-overlay-text">
+        <div className="couple-photo-frame" data-reveal>
+          <img src={COUPLE_PORTRAIT} alt="Sabith Ali and Fathima Nihana" />
+          <div className="photo-overlay-text">
             <span>Sabith &amp; Nihana</span>
             <span className="photo-date">08 · 08 · 2026</span>
           </div>
@@ -429,7 +434,7 @@ function Invitation() {
           Your presence and prayers on our special day are the greatest gift we
           could ask for.
         </p>
-        <p className="footer-couple">Sabith &amp; Nihana</p> 
+        <p className="footer-couple">Sabith &amp; Nihana</p>
         <div className="footer-bottom">
           <span>08 · 08 · 2026</span>
           <span className="dot">·</span>
@@ -446,7 +451,7 @@ function Invitation() {
       >
         <i className={`fa-solid ${playing ? "fa-pause" : "fa-music"}`} />
       </button>
-      <audio ref={audioRef} id="bg-audio" src="/music.mp3" loop preload="none" />
+      <audio ref={audioRef} id="bg-audio" src="/music.mp3" loop preload="auto" />
     </div>
   );
 }

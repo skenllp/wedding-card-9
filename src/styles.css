@@ -129,6 +129,10 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase;
 }
 
+.intro-names {
+  margin: 1.5rem 0 2rem;
+}
+
 .intro-btn {
   margin-top: 2rem;
   display: inline-block;
