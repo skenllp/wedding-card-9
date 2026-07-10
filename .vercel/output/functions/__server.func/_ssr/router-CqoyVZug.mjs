@@ -1,7 +1,7 @@
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CBJYjjPe.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CqoyVZug.js
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-BkkhluEG.css";
 function NotFoundComponent() {
@@ -143,66 +143,70 @@ function RootComponent() {
 	});
 }
 var $$splitComponentImporter = () => import("./routes-CiAnR-is.mjs");
+var DEPLOYED_DOMAIN = "https://sabith-nihana.skenllp.com";
 var rootRouteChildren = { IndexRoute: createFileRoute("/")({
-	head: () => ({
-		meta: [
-			{ title: "Sabith & Nihana — Wedding Invitation" },
-			{
-				name: "description",
-				content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Auditorium, Edavannappara."
-			},
-			{
-				property: "og:title",
-				content: "Sabith & Nihana — Wedding Invitation"
-			},
-			{
-				property: "og:description",
-				content: "08.08.2026 · Chaliyar Auditorium, Edavannappara"
-			},
-			{
-				property: "og:type",
-				content: "website"
-			},
-			{
-				property: "og:image",
-				content: "/sabithali.png"
-			},
-			{
-				name: "twitter:card",
-				content: "summary_large_image"
-			},
-			{
-				name: "twitter:image",
-				content: "/sabithali.png"
-			}
-		],
-		links: [
-			{
-				rel: "preconnect",
-				href: "https://fonts.googleapis.com"
-			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous"
-			},
-			{
-				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap"
-			},
-			{
-				rel: "stylesheet",
-				href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-			}
-		],
-		scripts: [{
-			src: "https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js",
-			defer: true
-		}, {
-			src: "https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js",
-			defer: true
-		}]
-	}),
+	head: () => {
+		const ogImageUrl = `${DEPLOYED_DOMAIN}/sabithali.png`;
+		return {
+			meta: [
+				{ title: "Sabith & Nihana — Wedding Invitation" },
+				{
+					name: "description",
+					content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Auditorium, Edavannappara."
+				},
+				{
+					property: "og:title",
+					content: "Sabith & Nihana — Wedding Invitation"
+				},
+				{
+					property: "og:description",
+					content: "08.08.2026 · Chaliyar Auditorium, Edavannappara"
+				},
+				{
+					property: "og:type",
+					content: "website"
+				},
+				{
+					property: "og:image",
+					content: ogImageUrl
+				},
+				{
+					name: "twitter:card",
+					content: "summary_large_image"
+				},
+				{
+					name: "twitter:image",
+					content: ogImageUrl
+				}
+			],
+			links: [
+				{
+					rel: "preconnect",
+					href: "https://fonts.googleapis.com"
+				},
+				{
+					rel: "preconnect",
+					href: "https://fonts.gstatic.com",
+					crossOrigin: "anonymous"
+				},
+				{
+					rel: "stylesheet",
+					href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap"
+				},
+				{
+					rel: "stylesheet",
+					href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+				}
+			],
+			scripts: [{
+				src: "https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js",
+				defer: true
+			}, {
+				src: "https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js",
+				defer: true
+			}]
+		};
+	},
 	component: lazyRouteComponent($$splitComponentImporter, "component")
 }).update({
 	id: "/",
