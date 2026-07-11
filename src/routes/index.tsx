@@ -86,6 +86,137 @@
     return t;
   }
 
+  /* ─── Full-page fixed petal rain (one seamless canvas for entire page) ─── */
+  function usePetalRain() {
+    useEffect(() => {
+      // Create canvas fixed to the viewport so petals fall seamlessly over every section
+      const canvas = document.createElement("canvas");
+      canvas.id = "petal-rain-canvas";
+      canvas.setAttribute("aria-hidden", "true");
+      Object.assign(canvas.style, {
+        position: "fixed",
+        inset: "0",
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        zIndex: "1000",      // above intro overlay (999); content sits at 1001+
+        opacity: "1",
+      });
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext("2d")!;
+      let raf: number;
+      const PETAL_COUNT = 55;
+
+      // Wedding palette: gold, champagne, crimson blush, ivory, bronze
+      const BASE_COLORS: [number, number, number][] = [
+        [226, 168,  51],   // warm gold
+        [245, 212, 122],   // champagne
+        [196,  40,  64],   // crimson blush
+        [245, 238, 223],   // ivory
+        [184, 131,  26],   // bronze gold
+        [255, 200, 180],   // soft rose
+      ];
+
+      interface Petal {
+        x: number; y: number;
+        w: number; h: number;
+        r: number; g: number; b: number;
+        opacity: number;
+        speed: number;
+        drift: number;
+        angle: number;
+        spin: number;
+        phase: number;
+        wobble: number;
+      }
+
+      const resize = () => {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+
+      const rand = (min: number, max: number) => Math.random() * (max - min) + min;
+
+      const makePetal = (spreadY = false): Petal => {
+        const w = rand(5, 16);
+        const [r, g, b] = BASE_COLORS[Math.floor(Math.random() * BASE_COLORS.length)];
+        return {
+          x: rand(0, window.innerWidth),
+          y: spreadY ? rand(-window.innerHeight, window.innerHeight) : rand(-40, -5),
+          w,
+          h: w * rand(0.38, 0.62),
+          r, g, b,
+          opacity: rand(0.12, 0.52),
+          speed:   rand(0.18, 0.55),
+          drift:   rand(-0.2, 0.2),
+          angle:   rand(0, Math.PI * 2),
+          spin:    rand(-0.012, 0.012),
+          phase:   rand(0, Math.PI * 2),
+          wobble:  rand(0.1, 0.4),
+        };
+      };
+
+      resize();
+      window.addEventListener("resize", resize);
+
+      const petals: Petal[] = Array.from({ length: PETAL_COUNT }, () => makePetal(true));
+      let tick = 0;
+
+      const draw = () => {
+        tick++;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const p of petals) {
+          p.x    += p.drift + Math.sin(tick * 0.012 + p.phase) * p.wobble;
+          p.y    += p.speed;
+          p.angle += p.spin;
+
+          // wrap horizontally
+          if (p.x < -30)  p.x = canvas.width  + 20;
+          if (p.x > canvas.width + 30) p.x = -20;
+
+          if (p.y > canvas.height + 30) {
+            Object.assign(p, makePetal(false));
+          }
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.angle);
+          ctx.globalAlpha = p.opacity;
+
+          // main petal body
+          const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, p.w * 0.6);
+          grad.addColorStop(0, `rgba(${p.r},${p.g},${p.b},${p.opacity})`);
+          grad.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.w / 2, p.h / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+
+          // specular highlight
+          ctx.globalAlpha = p.opacity * 0.35;
+          ctx.fillStyle = "rgba(255,255,255,0.7)";
+          ctx.beginPath();
+          ctx.ellipse(-p.w * 0.11, -p.h * 0.14, p.w * 0.2, p.h * 0.15, -0.4, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.restore();
+        }
+
+        raf = requestAnimationFrame(draw);
+      };
+
+      draw();
+
+      return () => {
+        cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+        canvas.remove();
+      };
+    }, []);
+  }
+
   /* ─── Main Component ─── */
   function Invitation() {
     const { d, h, m, s } = useCountdown();
@@ -93,6 +224,10 @@
     const [opened, setOpened] = useState(false);
     const [rsvpAnswer, setRsvpAnswer] = useState<null | "yes" | "no">(null);
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    /* single full-page petal rain */
+    usePetalRain();
+
 
     /* ── Confetti popper ── */
     const launchConfetti = () => {
@@ -242,15 +377,6 @@
               Open Invitation
             </button>
           </div>
-        </div>
-
-        {/* Floating decorative sparkles */}
-        <div className="floating-shapes" aria-hidden>
-          <span className="shape s1">✦</span>
-          <span className="shape s2">✦</span>
-          <span className="shape s3">✦</span>
-          <span className="shape s4">✦</span>
-          <span className="shape s5">✦</span>
         </div>
 
         {/* ── HERO ── */}
@@ -404,6 +530,9 @@
         <section className="section attend-section" id="attend">
           <div className="attend-label" data-reveal>Join Us</div>
           <h2 className="attend-title" data-reveal>Will You Attend?</h2> 
+          <p className="attend-subtitle" data-reveal>
+            <em>Your presence will be much appreciated </em>
+          </p>
           <div className="attend-divider" data-reveal>
             <span>✦</span>
           </div>
