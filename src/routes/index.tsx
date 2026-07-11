@@ -197,7 +197,7 @@
             <h2 className="hero-names intro-names">
               <span className="name-word">Sabith Ali</span>
               <span className="name-amp">&amp;</span>
-              <span className="name-word">Fathima Nihana</span>
+              <span className="name-word">Fathima <br /> Nihana</span>
             </h2>
             <button
               className="intro-btn"
@@ -241,7 +241,7 @@
             <h2 className="hero-names" data-reveal>
               <span className="name-word">Sabith Ali</span>
               <span className="name-amp">&amp;</span>
-              <span className="name-word">Fathima Nihana</span>
+              <span className="name-word">Fathima <br /> Nihana</span>
             </h2>
             <div className="hero-meta" data-reveal>
               <p className="hero-tag">
@@ -278,7 +278,7 @@
             </article>
             <article className="family-card" data-stagger-item>
               <span className="family-role">The Bride</span>
-              <h3 className="family-name">Fathima Nihana</h3>
+              <h3 className="family-name">Fathima <br /> Nihana</h3>
               <div className="mini-divider" />
               <p className="family-parents">Beloved daughter of</p>
               <p className="family-parents-names">Naseer &amp; Mumthaz</p>
