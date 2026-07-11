@@ -91,7 +91,36 @@
     const { d, h, m, s } = useCountdown();
     const [playing, setPlaying] = useState(false);
     const [opened, setOpened] = useState(false);
+    const [rsvpAnswer, setRsvpAnswer] = useState<null | "yes" | "no">(null);
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    /* ── Confetti popper ── */
+    const launchConfetti = () => {
+      const colors = ["#e2a833", "#f5d47a", "#b8831a", "#f5eedf", "#9e1e30", "#c42840"];
+      const container = document.getElementById("rsvp-confetti-root");
+      if (!container) return;
+      container.innerHTML = "";
+      for (let i = 0; i < 90; i++) {
+        const dot = document.createElement("span");
+        dot.className = "confetti-dot";
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 10 + 6;
+        const angleRad = (Math.random() * 360) * (Math.PI / 180);
+        const dist = Math.random() * 220 + 80;
+        const tx = Math.cos(angleRad) * dist;
+        const ty = Math.sin(angleRad) * dist;
+        const dur = Math.random() * 0.8 + 0.7;
+        const delay = Math.random() * 0.35;
+        dot.style.cssText = `
+          background:${color};
+          width:${size}px;height:${size}px;
+          border-radius:${Math.random() > 0.4 ? "50%" : "2px"};
+          --tx:${tx}px;--ty:${ty}px;
+          animation: confetti-burst ${dur}s ease-out ${delay}s forwards;
+        `;
+        container.appendChild(dot);
+      }
+    };
 
     /* GSAP animations */
     useEffect(() => {
@@ -367,42 +396,67 @@
               >
                 <i className="fa-solid fa-location-dot" /> Open Google Maps
               </a>
-              <a
-                className="btn btn-wa"
-                href="https://wa.me/918086769152?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20confirm%20my%20attendance%20at%20the%20wedding%20of%20Sabith%20Ali%20%26%20Fathima%20Nihana%20on%2008%20August%202026.%20%F0%9F%8C%BF"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fa-brands fa-whatsapp" /> RSVP on WhatsApp
-              </a>
             </div>
           </div>
         </section>
 
-        {/* ── WHATSAPP RSVP ── */}
-        <section className="section rsvp-section" id="rsvp">
-          <h2 className="section-title" data-reveal>RSVP</h2>
-          <div className="section-sub" data-reveal>
-            Let us know you're coming
+        {/* ── WILL YOU ATTEND ── */}
+        <section className="section attend-section" id="attend">
+          <div className="attend-label" data-reveal>Join Us</div>
+          <h2 className="attend-title" data-reveal>Will You Attend?</h2> 
+          <div className="attend-divider" data-reveal>
+            <span>✦</span>
           </div>
-          <div className="rsvp-card" data-reveal>
-            <div className="rsvp-icon-wrap">
-              <i className="fa-brands fa-whatsapp rsvp-wa-icon" />
-            </div>
-            <p className="rsvp-msg">
-              We'd be honoured to have you celebrate with us. Please click below
-              to confirm your attendance via WhatsApp.
-            </p>
-            <a
-              className="btn rsvp-btn"
-              href="https://wa.me/918086769152?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20confirm%20my%20attendance%20at%20the%20wedding%20of%20Sabith%20Ali%20%26%20Fathima%20Nihana%20on%2008%20August%202026.%20%F0%9F%8C%BF"
-              target="_blank"
-              rel="noreferrer"
+
+          <div className="attend-options" data-reveal>
+            <button
+              id="attend-yes-btn"
+              className={`attend-opt attend-yes ${rsvpAnswer === "yes" ? "is-selected" : ""}`}
+              onClick={() => {
+                setRsvpAnswer("yes");
+                launchConfetti();
+              }}
+              disabled={rsvpAnswer !== null}
             >
-              <i className="fa-brands fa-whatsapp" /> Confirm Attendance
-            </a>
-            <p className="rsvp-note">Tap to open WhatsApp · +91 80867 69152</p>
+              <span className="attend-opt-icon">
+                {rsvpAnswer === "yes" ? "✓" : ""}
+              </span>
+              <span>Yes, In Sha Allah! 😍</span>
+            </button>
+
+            <button
+              id="attend-no-btn"
+              className={`attend-opt attend-no ${rsvpAnswer === "no" ? "is-selected" : ""}`}
+              onClick={() => setRsvpAnswer("no")}
+              disabled={rsvpAnswer !== null}
+            >
+              <span className="attend-opt-icon">
+                {rsvpAnswer === "no" ? "✕" : ""}
+              </span>
+              <span>Unfortunately, I can't make it</span>
+            </button>
           </div>
+
+          {/* Confetti anchor */}
+          <div id="rsvp-confetti-root" className="confetti-root" aria-hidden />
+
+          {rsvpAnswer === "yes" && (
+            <div className="attend-thanks" id="attend-thanks">
+              <span className="thanks-emoji">🎉</span>
+              <p className="thanks-text">
+                Jazakallah Khair! We look forward to celebrating with you!
+              </p>
+            </div>
+          )}
+
+          {rsvpAnswer === "no" && (
+            <div className="attend-regret" id="attend-regret">
+              <span className="regret-emoji">🤍</span>
+              <p className="regret-text">
+                We understand, and we appreciate your warm wishes. May Allah bless you always.
+              </p>
+            </div>
+          )}
         </section>
 
         {/* ── GALLERY ── */}
@@ -439,12 +493,7 @@
             Your presence and prayers on our special day are the greatest gift we
             could ask for.
           </p>
-          <p className="footer-couple">Sabith &amp; Nihana</p>
-          <div className="footer-bottom">
-            <span>08 · 08 · 2026</span>
-            <span className="dot">·</span>
-            <span>Chaliyar Convention Centre, Edavannappara</span>
-          </div>
+          <p className="footer-couple">Sabith &amp; Nihana</p> 
         </footer>
 
         {/* ── Floating music button ── */}

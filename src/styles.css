@@ -1055,3 +1055,214 @@ img { display: block; max-width: 100%; }
   0%, 100% { box-shadow: 0 4px 20px rgba(8,14,26,0.5); }
   50%       { box-shadow: 0 4px 36px rgba(8,14,26,0.75), 0 0 0 4px rgba(226,168,51,0.15); }
 }
+
+/* ═══════════════════════════════════════════════════════
+   WILL YOU ATTEND SECTION
+══════════════════════════════════════════════════════════ */
+.attend-section {
+  background: var(--charcoal-2);
+  max-width: 100%;
+  padding: 6rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.attend-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.attend-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.attend-subtitle {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--gold);
+  letter-spacing: 0.01em;
+  margin-bottom: 0.2rem;
+}
+
+.attend-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+  margin: 1.2rem 0 2.5rem;
+}
+
+.attend-divider::before,
+.attend-divider::after {
+  content: "";
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim));
+}
+.attend-divider::after {
+  background: linear-gradient(to left, transparent, var(--gold-dim));
+}
+
+/* Option buttons */
+.attend-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.attend-opt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 1.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(226,168,51,0.22);
+  background: linear-gradient(135deg, var(--charcoal-3) 0%, rgba(17,28,48,0.9) 100%);
+  color: var(--text-dim);
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: left;
+}
+
+.attend-opt:hover:not(:disabled) {
+  border-color: rgba(226,168,51,0.6);
+  background: linear-gradient(135deg, var(--charcoal-4) 0%, rgba(26,40,64,0.95) 100%);
+  color: var(--text-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(8,14,26,0.4);
+}
+
+.attend-opt:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.attend-opt-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(226,168,51,0.3);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  color: var(--text-muted);
+}
+
+/* Yes — green gold selected state */
+.attend-yes.is-selected {
+  border-color: rgba(226,168,51,0.7);
+  background: linear-gradient(135deg, rgba(17,28,48,0.95) 0%, rgba(26,40,64,1) 100%);
+  color: var(--gold-light);
+  box-shadow: 0 4px 30px rgba(226,168,51,0.12);
+}
+
+.attend-yes.is-selected .attend-opt-icon {
+  background: rgba(226,168,51,0.18);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* No — muted crimson selected state */
+.attend-no.is-selected {
+  border-color: rgba(158,30,48,0.55);
+  background: linear-gradient(135deg, rgba(17,28,48,0.95) 0%, rgba(26,40,64,1) 100%);
+  color: var(--text-dim);
+  box-shadow: 0 4px 30px rgba(158,30,48,0.08);
+}
+
+.attend-no.is-selected .attend-opt-icon {
+  background: rgba(158,30,48,0.15);
+  border-color: var(--crimson-light);
+  color: var(--crimson-light);
+}
+
+/* Thanks & Regret cards */
+.attend-thanks,
+.attend-regret {
+  max-width: 380px;
+  margin: 2.2rem auto 0;
+  text-align: center;
+  animation: thanks-in 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes thanks-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.thanks-emoji,
+.regret-emoji {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.thanks-text {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  color: var(--gold-light);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.regret-text {
+  font-family: var(--ff-serif);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--text-dim);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ─── Confetti popper ─── */
+.confetti-root {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.confetti-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+  opacity: 0;
+}
+
+@keyframes confetti-burst {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  60%  { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.2) rotate(720deg);
+  }
+}
+
