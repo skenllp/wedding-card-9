@@ -1,12 +1,13 @@
 import { n as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CiAnR-is.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-861aEyNQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var WEDDING_DATE = (/* @__PURE__ */ new Date("2026-08-08T16:30:00+05:30")).getTime();
 var MAPS_URL = "https://maps.app.goo.gl/hjH4mCRPDiDNN9JW8?g_st=ic";
 var COUPLE_PORTRAIT = "/sabithali.png";
-var COUPLE_LANDSCAPE = "/sabithali_landscape.png";
+var COUPLE_LANDSCAPE = "/sabithali-bg.png";
+var HERO_BG = "/sabithali-bg.png";
 function useCountdown() {
 	const [t, setT] = (0, import_react.useState)({
 		d: 0,
@@ -60,28 +61,12 @@ function Invitation() {
 				duration: 1.3,
 				stagger: .3,
 				ease: "power3.out"
-			}).from(".bismillah-en", {
-				opacity: 0,
-				y: 14,
-				duration: 1,
-				ease: "power2.out"
-			}, "-=0.5").from(".intro-mark", {
-				opacity: 0,
-				letterSpacing: "0.3em",
-				duration: 1,
-				ease: "power2.out"
-			}, "-=0.4").from(".intro-names", {
+			}).from(".bismillah-en, .intro-mark, .intro-names, .intro-btn", {
 				opacity: 0,
 				y: 16,
-				duration: 1,
+				duration: .8,
 				ease: "power2.out"
-			}, "-=0.3").from(".intro-btn", {
-				opacity: 0,
-				y: 16,
-				scale: .95,
-				duration: .9,
-				ease: "back.out(1.5)"
-			}, "-=0.2");
+			});
 			gsap.utils.toArray("[data-reveal]").forEach((el) => {
 				gsap.from(el, {
 					opacity: 0,
@@ -225,7 +210,7 @@ function Invitation() {
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "hero-bg",
-						style: { backgroundImage: `url(${COUPLE_LANDSCAPE})` }
+						style: { backgroundImage: `url(${HERO_BG})` }
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "hero-veil" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -352,7 +337,7 @@ function Invitation() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "family-house",
-									children: "Edavannappara"
+									children: "Puthukkudi (H), Thathoorpoyil, Mavoor"
 								})
 							]
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
@@ -378,7 +363,7 @@ function Invitation() {
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "family-house",
-									children: "Edavannappara"
+									children: "Poolakkathodi (H), Karakutty, Kodiyathur"
 								})
 							]
 						})]
@@ -491,7 +476,7 @@ function Invitation() {
 									}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "event-row",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "fa-solid fa-location-dot" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Venue" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Chaliyar Auditorium, Edavannappara" })] })]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", { className: "fa-solid fa-location-dot" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Venue" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "Chaliyar Convention Centre, Edavannappara" })] })]
 									})
 								]
 							}),
@@ -587,7 +572,7 @@ function Invitation() {
 								className: "dot",
 								children: "·"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Chaliyar Auditorium, Edavannappara" })
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Chaliyar Convention Centre, Edavannappara" })
 						]
 					})
 				]

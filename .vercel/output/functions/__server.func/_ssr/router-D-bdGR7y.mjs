@@ -1,9 +1,9 @@
 import { n as require_jsx_runtime, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { c as HeadContent, d as Outlet, f as lazyRouteComponent, g as useRouter, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CqoyVZug.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D-bdGR7y.js
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-BkkhluEG.css";
+var styles_default = "/assets/styles-rtcB5oEy.css";
 function NotFoundComponent() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		style: {
@@ -112,7 +112,7 @@ var Route$1 = createRootRouteWithContext()({
 			{ title: "Sabith & Nihana — Wedding Invitation" },
 			{
 				name: "description",
-				content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Auditorium, Edavannappara."
+				content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Convention Centre, Edavannappara."
 			}
 		],
 		links: [{
@@ -142,7 +142,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter = () => import("./routes-CiAnR-is.mjs");
+var $$splitComponentImporter = () => import("./routes-861aEyNQ.mjs");
 var DEPLOYED_DOMAIN = "https://sabith-nihana.skenllp.com";
 var rootRouteChildren = { IndexRoute: createFileRoute("/")({
 	head: () => {
@@ -152,7 +152,7 @@ var rootRouteChildren = { IndexRoute: createFileRoute("/")({
 				{ title: "Sabith & Nihana — Wedding Invitation" },
 				{
 					name: "description",
-					content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Auditorium, Edavannappara."
+					content: "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Convention Centre, Edavannappara."
 				},
 				{
 					property: "og:title",
@@ -160,7 +160,7 @@ var rootRouteChildren = { IndexRoute: createFileRoute("/")({
 				},
 				{
 					property: "og:description",
-					content: "08.08.2026 · Chaliyar Auditorium, Edavannappara"
+					content: "08.08.2026 · Chaliyar Convention Centre, Edavannappara"
 				},
 				{
 					property: "og:type",

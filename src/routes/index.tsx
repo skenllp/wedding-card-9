@@ -16,12 +16,12 @@
           {
             name: "description",
             content:
-              "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Auditorium, Edavannappara.",
+              "You are cordially invited to the wedding of Sabith Ali & Fathima Nihana on 08.08.2026 at Chaliyar Convention Centre, Edavannappara.",
           },
           { property: "og:title", content: "Sabith & Nihana — Wedding Invitation" },
           {
             property: "og:description",
-            content: "08.08.2026 · Chaliyar Auditorium, Edavannappara",
+            content: "08.08.2026 · Chaliyar Convention Centre, Edavannappara",
           },
           { property: "og:type", content: "website" },
           { property: "og:image", content: ogImageUrl },
@@ -61,8 +61,11 @@
 
   const WEDDING_DATE = new Date("2026-08-08T16:30:00+05:30").getTime();
   const MAPS_URL = "https://maps.app.goo.gl/hjH4mCRPDiDNN9JW8?g_st=ic";
-  const COUPLE_PORTRAIT = "/sabithali.png";
-  const COUPLE_LANDSCAPE = "/sabithali_landscape.png";
+  const COUPLE_PORTRAIT = "/sabithali 1.jpeg";
+  const COUPLE_LANDSCAPE = "/sabithali-bg.png";
+  const HERO_BG = "/sabithali-bg.png";
+  const GALLERY_IMG_1 = "/sabithali-23.jpeg";
+  const GALLERY_IMG_2 = "/sabi45.jpeg";
 
   /* ─── Countdown hook ─── */
   function useCountdown() {
@@ -120,34 +123,13 @@
           ease: "power3.out",
         })
           .from(
-            ".bismillah-en",
-            { opacity: 0, y: 14, duration: 1, ease: "power2.out" },
-            "-=0.5"
-          )
-          .from(
-            ".intro-mark",
-            {
-              opacity: 0,
-              letterSpacing: "0.3em",
-              duration: 1,
-              ease: "power2.out",
-            },
-            "-=0.4"
-          )
-          .from(
-            ".intro-names",
+            ".bismillah-en, .intro-mark, .intro-names, .intro-btn",
             {
               opacity: 0,
               y: 16,
-              duration: 1,
+              duration: 0.8,
               ease: "power2.out",
-            },
-            "-=0.3"
-          )
-          .from(
-            ".intro-btn",
-            { opacity: 0, y: 16, scale: 0.95, duration: 0.9, ease: "back.out(1.5)" },
-            "-=0.2"
+            }
           );
 
         /* ScrollTrigger reveals */
@@ -246,7 +228,7 @@
         <section className="hero">
           <div
             className="hero-bg"
-            style={{ backgroundImage: `url(${COUPLE_LANDSCAPE})` }}
+            style={{ backgroundImage: `url(${HERO_BG})` }}
           />
           <div className="hero-veil" />
           <div className="hero-inner">
@@ -306,7 +288,7 @@
               <div className="mini-divider" />
               <p className="family-parents">Beloved son of</p>
               <p className="family-parents-names">Abdul Jabbar &amp; Laila</p>
-              <p className="family-house">Edavannappara</p>
+              <p className="family-house">Puthukkudi (H), Thathoorpoyil, Mavoor</p>
             </article>
             <article className="family-card" data-stagger-item>
               <span className="family-role">The Bride</span>
@@ -314,7 +296,7 @@
               <div className="mini-divider" />
               <p className="family-parents">Beloved daughter of</p>
               <p className="family-parents-names">Naseer &amp; Mumthaz</p>
-              <p className="family-house">Edavannappara</p>
+              <p className="family-house">Poolakkathodi (H), Karakutty, Kodiyathur</p>
             </article>
           </div>
         </section>
@@ -386,7 +368,7 @@
                 <i className="fa-solid fa-location-dot" />
                 <div>
                   <span>Venue</span>
-                  <strong>Chaliyar Auditorium, Edavannappara</strong>
+                  <strong>Chaliyar Convention Centre, Edavannappara</strong>
                 </div>
               </div>
             </div>
@@ -425,11 +407,11 @@
               <div className="gal-hover-overlay" />
             </figure>
             <figure className="gal-frame" data-stagger-item>
-              <img src={COUPLE_LANDSCAPE} alt="Couple portrait" />
+              <img src={GALLERY_IMG_1} alt="Couple portrait 2" />
               <div className="gal-hover-overlay" />
             </figure>
             <figure className="gal-frame" data-stagger-item>
-              <img src={COUPLE_PORTRAIT} alt="Couple portrait" />
+              <img src={GALLERY_IMG_2} alt="Couple portrait 3" />
               <div className="gal-hover-overlay" />
             </figure>
           </div>
@@ -449,7 +431,7 @@
           <div className="footer-bottom">
             <span>08 · 08 · 2026</span>
             <span className="dot">·</span>
-            <span>Chaliyar Auditorium, Edavannappara</span>
+            <span>Chaliyar Convention Centre, Edavannappara</span>
           </div>
         </footer>
 

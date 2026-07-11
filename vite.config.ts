@@ -8,6 +8,7 @@ export default defineConfig({
   },
   vite: {
     resolve: {
+      tsconfigPaths: true,
       alias: {
         "@": "/src",
       },
