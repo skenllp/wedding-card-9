@@ -257,21 +257,7 @@
           <a href="#verse" className="scroll-indicator" aria-label="Scroll down">
             <span className="chev" />
           </a>
-        </section>
-
-        {/* ── VERSE ── */}
-        <section id="verse" className="section verse">
-          <div className="verse-card" data-reveal>
-            <div className="line-divider">
-              <span>✦</span>
-            </div>
-            <p className="verse-text">"And We created you in pairs."</p>
-            <p className="verse-ref">— Surah An-Naba (78:8)</p>
-            <div className="line-divider">
-              <span>✦</span>
-            </div>
-          </div>
-        </section>
+        </section> 
 
         {/* ── FAMILIES ── */}
         <section className="section families">
@@ -382,14 +368,40 @@
                 <i className="fa-solid fa-location-dot" /> Open Google Maps
               </a>
               <a
-                className="btn btn-outline"
-                href={MAPS_URL}
+                className="btn btn-wa"
+                href="https://wa.me/918086769152?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20confirm%20my%20attendance%20at%20the%20wedding%20of%20Sabith%20Ali%20%26%20Fathima%20Nihana%20on%2008%20August%202026.%20%F0%9F%8C%BF"
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className="fa-solid fa-compass" /> Get Directions
+                <i className="fa-brands fa-whatsapp" /> RSVP on WhatsApp
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* ── WHATSAPP RSVP ── */}
+        <section className="section rsvp-section" id="rsvp">
+          <h2 className="section-title" data-reveal>RSVP</h2>
+          <div className="section-sub" data-reveal>
+            Let us know you're coming
+          </div>
+          <div className="rsvp-card" data-reveal>
+            <div className="rsvp-icon-wrap">
+              <i className="fa-brands fa-whatsapp rsvp-wa-icon" />
+            </div>
+            <p className="rsvp-msg">
+              We'd be honoured to have you celebrate with us. Please click below
+              to confirm your attendance via WhatsApp.
+            </p>
+            <a
+              className="btn rsvp-btn"
+              href="https://wa.me/918086769152?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20confirm%20my%20attendance%20at%20the%20wedding%20of%20Sabith%20Ali%20%26%20Fathima%20Nihana%20on%2008%20August%202026.%20%F0%9F%8C%BF"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa-brands fa-whatsapp" /> Confirm Attendance
+            </a>
+            <p className="rsvp-note">Tap to open WhatsApp · +91 80867 69152</p>
           </div>
         </section>
 

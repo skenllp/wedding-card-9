@@ -812,10 +812,108 @@ img { display: block; max-width: 100%; }
   transform: translateY(-2px);
 }
 
+.btn-wa {
+  background: linear-gradient(135deg, #128c3e, #25d366);
+  color: #ffffff;
+  border: 1px solid rgba(37,211,102,0.5);
+  box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+}
+
+.btn-wa i {
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.btn-wa:hover {
+  background: linear-gradient(135deg, #0e7a35, #1fbb58);
+  border-color: rgba(37,211,102,0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RSVP
+══════════════════════════════════════════════════════════ */
+.rsvp-section { background: var(--charcoal); max-width: 100%; padding: 6rem 1.5rem; }
+
+.rsvp-card {
+  background: linear-gradient(160deg, var(--charcoal-3) 0%, rgba(26,40,64,0.95) 100%);
+  border: 1px solid rgba(226,168,51,0.2);
+  border-radius: 6px;
+  padding: 3rem 2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 8px 50px rgba(8,14,26,0.5);
+}
+
+.rsvp-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a22, #0d2416);
+  border: 1px solid rgba(37,211,102,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.2);
+}
+
+.rsvp-wa-icon {
+  font-size: 2rem;
+  color: #25d366;
+}
+
+.rsvp-msg {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.rsvp-btn {
+  background: linear-gradient(135deg, #1a4d2a, #128c3e);
+  color: #ffffff;
+  border: 1px solid rgba(37,211,102,0.4);
+  box-shadow: 0 4px 24px rgba(37,211,102,0.25);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 0.9rem 2.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--transition);
+}
+
+.rsvp-btn:hover {
+  background: linear-gradient(135deg, #1f5c33, #159646);
+  border-color: rgba(37,211,102,0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+}
+
+.rsvp-btn i { font-size: 1.1rem; }
+
+.rsvp-note {
+  margin-top: 1.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 /* ═══════════════════════════════════════════════════════
    GALLERY
 ══════════════════════════════════════════════════════════ */
 .gallery { background: var(--charcoal); max-width: 100%; padding: 6rem 1.5rem; }
+
 
 .gallery-grid {
   display: grid;
